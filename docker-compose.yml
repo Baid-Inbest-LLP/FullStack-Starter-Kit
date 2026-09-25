@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: fullstack-starter-kit-server
+    restart: unless-stopped
+    ports:
+      - '5099:5099'
+    environment:
+      NODE_ENV: production
+      PORT: 5099
+      MONGODB_URI: ${MONGODB_URI}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change-me-refresh}
+      FRONTEND_URL: http://localhost:5199
+    volumes:
+      - ./server/uploads:/app/uploads
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: fullstack-starter-kit-client
+    restart: unless-stopped
+    ports:
+      - '8099:80'
+    depends_on:
+      - server

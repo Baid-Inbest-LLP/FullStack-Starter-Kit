@@ -1,0 +1,47 @@
+import { IconBuilding, IconChartBar, IconClipboardList, IconUsers } from '@tabler/icons-react';
+import PageBanner from '../../components/common/PageBanner';
+import { useMe } from '../../hooks/useAuth';
+
+const stats = [
+  { label: 'Metric One', Icon: IconClipboardList, tone: 'bg-blue-100 text-blue-700' },
+  { label: 'Metric Two', Icon: IconChartBar, tone: 'bg-emerald-100 text-emerald-700' },
+  { label: 'Metric Three', Icon: IconBuilding, tone: 'bg-amber-100 text-amber-700' },
+  { label: 'Metric Four', Icon: IconUsers, tone: 'bg-rose-100 text-rose-700' },
+];
+
+export default function HomePage() {
+  const { data: user } = useMe();
+
+  return (
+    <div className="space-y-4">
+      <PageBanner
+        title={`Welcome${user?.name ? `, ${user.name}` : ''}`}
+        subtitle="FullStack Starter Kit overview"
+      />
+
+      <div className="dashboard-grid-4">
+        {stats.map(({ label, Icon, tone }) => (
+          <div key={label} className="card p-4 flex items-center gap-3">
+            <div className={`stat-icon-box ${tone}`}>
+              <Icon stroke={1.8} />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-gray-500 uppercase tracking-wide leading-tight">
+                {label}
+              </p>
+              <p className="text-xl font-bold text-gray-900">—</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="card p-6">
+        <h3 className="text-base font-semibold text-gray-800">Getting started</h3>
+        <p className="text-sm text-gray-500 mt-1">
+          Pick a theme in the Control Center, then add users from Settings. Domain modules will
+          plug into this dashboard.
+        </p>
+      </div>
+    </div>
+  );
+}

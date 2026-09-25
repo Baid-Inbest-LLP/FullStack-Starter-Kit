@@ -1,0 +1,17 @@
+{
+  "name": "fullstack-starter-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FullStack Starter Kit - Internal App",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "dev:server": "pnpm --filter server dev",
+    "dev:client": "pnpm --filter client dev",
+    "build": "pnpm run --filter client build && pnpm run --filter server build",
+    "create-project": "node scripts/create-project.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
