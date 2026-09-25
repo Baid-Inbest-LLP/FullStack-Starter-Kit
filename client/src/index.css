@@ -32,14 +32,6 @@
   --chart-surface: #ffffff;
 }
 
-/* Recharts' SVG surface is focusable for keyboard accessibility; suppress the
- * browser's default focus-ring box so clicking a chart doesn't show a border. */
-.recharts-wrapper:focus,
-.recharts-wrapper *:focus,
-.recharts-surface:focus {
-  outline: none;
-}
-
 @layer base {
   * {
     box-sizing: border-box;

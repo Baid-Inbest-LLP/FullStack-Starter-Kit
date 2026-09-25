@@ -24,7 +24,6 @@ MERN monorepo with authentication, a light/dark themed layout (navbar + collapsi
 - **Client:** React 19, Vite, Mantine, Tailwind CSS, React Query, Redux Toolkit, React Router, React Hook Form
 - **Server:** Express 5, Mongoose 8, Zod, JWT (access + refresh)
 - **Database:** MongoDB
-- **Exports:** ExcelJS and Puppeteer PDF report builders (`server/src/utils`)
 
 ## Getting started
 

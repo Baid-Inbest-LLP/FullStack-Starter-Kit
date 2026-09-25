@@ -9,8 +9,6 @@ RUN pnpm install --prod --frozen-lockfile || pnpm install --prod
 
 COPY . .
 
-RUN mkdir -p uploads
-
 EXPOSE 5099
 
 CMD ["node", "src/index.js"]

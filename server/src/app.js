@@ -3,7 +3,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
-import path from 'path';
 import { config } from './config/index.js';
 import routes from './routes/index.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
@@ -35,8 +34,6 @@ const limiter = rateLimit({
   message: { success: false, message: 'Too many requests' },
 });
 app.use('/api', limiter);
-
-app.use('/uploads', express.static(path.resolve(config.upload.dir)));
 
 app.use('/api/v1', routes);
 
